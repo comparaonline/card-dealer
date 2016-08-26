@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": "../.eslintrc",
   "env": {
     "node": true,
     "mocha": true
@@ -14,17 +14,6 @@
     "invalidateCache": true
   },
   "rules": {
-    "strict": 0,
-    "comma-dangle": 0,
-    "arrow-body-style": [2, "as-needed"],
-    "arrow-parens": 0,
-    "quotes": [2, "single"],
-    "prefer-spread": 0,
-    "prefer-rest-params": 0,
-    "func-names": 0,
-    "import/no-unresolved": 0,
-    "no-underscore-dangle": 0,
-    "object-curly-spacing": 0,
     "no-param-reassign": 0,
     "no-unused-expressions": 0
   }

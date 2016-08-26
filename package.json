@@ -4,6 +4,7 @@
   "description": "Simple card dealer for interviews",
   "main": "index.js",
   "scripts": {
+    "start": "node .",
     "test": "mocha"
   },
   "author": "Ezequiel Rabinovich <erabinovich@gmail.com>",
@@ -14,5 +15,12 @@
     "eslint-config-airbnb-base": "^5.0.3",
     "eslint-plugin-import": "^1.14.0",
     "mocha": "^3.0.2"
+  },
+  "dependencies": {
+    "app-module-path": "^1.1.0",
+    "boom": "^4.0.0",
+    "hapi": "^14.2.0",
+    "hapi-routing": "^1.0.0",
+    "uuid": "^2.0.2"
   }
 }
