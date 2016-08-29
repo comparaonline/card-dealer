@@ -26,7 +26,21 @@ describe('Deck manager', () => {
     fakeTime((done, clock) => {
       const manager = new DeckManager();
       const token = manager.createDeck();
-      clock.tick(DeckManager.timeout + 1);
+      clock.tick(DeckManager.timeout);
+      expect(() => manager.getDeck(token)).to.throw(/Wrong token/);
+      done();
+    });
+  });
+
+  it('should refresh a deck\'s timeout on access', () => {
+    fakeTime((done, clock) => {
+      const manager = new DeckManager();
+      const token = manager.createDeck();
+      clock.tick(DeckManager.timeout - 1);
+      expect(() => manager.getDeck(token)).to.not.throw(/Wrong token/);
+      clock.tick(1);
+      expect(() => manager.getDeck(token)).to.not.throw(/Wrong token/);
+      clock.tick(DeckManager.timeout);
       expect(() => manager.getDeck(token)).to.throw(/Wrong token/);
       done();
     });
