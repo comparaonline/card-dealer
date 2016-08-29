@@ -26,7 +26,7 @@ describe('Dealer API', () => {
         expect(error2).to.be.null;
         expect(response.statusCode).to.eq(200);
         const card = JSON.parse(body);
-        const id = c => c.number.toString() + c.suit;
+        const id = c => `${c.number}${c.suit}`;
         expect(id(card)).to.be.oneOf(Deck.cards.map(id));
         done();
       });
@@ -42,7 +42,7 @@ describe('Dealer API', () => {
           expect(error2).to.be.null;
           expect(response.statusCode).to.eq(200);
           const cards = JSON.parse(body);
-          const id = c => c.number.toString() + c.suit;
+        const id = c => `${c.number}${c.suit}`;
           expect(cards.length).to.eq(CARD_COUNT);
           cards.forEach(card => expect(id(card)).to.be.oneOf(Deck.cards.map(id)));
           done();

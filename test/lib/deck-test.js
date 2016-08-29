@@ -12,14 +12,13 @@ describe('Deck', () => {
   });
 
   it('should deal the whole deck, never repeating a card', () => {
-    const dealt = new Set();
+    const dealt = [];
     const deck = new Deck();
     for (let i = 0; i < 52; i++) {
-      const card = deck.deal();
-      if (dealt.has(card)) {
-        fail(`Card ${card} was already dealt!`);
-      }
-      dealt.add(card);
+      const id = c => `${c.number}${c.suit}`;
+      const card = id(deck.deal());
+      expect(card).to.not.be.oneOf(dealt);
+      dealt.push(card);
     }
   });
 
