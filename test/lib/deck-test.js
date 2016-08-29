@@ -23,6 +23,17 @@ describe('Deck', () => {
     }
   });
 
+  it('should deal as many cards as requested', () => {
+    const deck = new Deck();
+    const cards = deck.deal(30);
+    expect(cards.length).to.eq(30);
+  });
+
+  it('should fail when requesting more cards than left on the deck', () => {
+    const deck = new Deck();
+    expect(() => deck.deal(53)).to.throw(/Out of cards/);
+  });
+
   it('should throw an exception when the deck is dealt completely', () => {
     const deck = new Deck();
     for (let i = 0; i < 52; i++) { deck.deal(); }

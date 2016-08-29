@@ -3,6 +3,6 @@
     "configuration": {
       "debug": false
     },
-    "connection": {}
+    "connection": null
   }
 }

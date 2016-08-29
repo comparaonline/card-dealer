@@ -17,9 +17,10 @@ module.exports = class MainController extends Controller {
   deal() {
     mightFail();
     const token = this.request.params.id;
+    const count = this.request.params.count || 1;
     try {
       const deck = manager.getDeck(token);
-      this.reply(deck.deal());
+      this.reply(deck.deal(count));
     } catch (e) {
       throw Boom.wrap(e, 404);
     }
