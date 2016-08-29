@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node .",
-    "test": "mocha"
+    "test": "NODE_ENV=test mocha"
   },
   "author": "Ezequiel Rabinovich <erabinovich@gmail.com>",
   "license": "ISC",
@@ -14,11 +14,14 @@
     "eslint": "^3.3.1",
     "eslint-config-airbnb-base": "^5.0.3",
     "eslint-plugin-import": "^1.14.0",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "request": "^2.74.0"
   },
   "dependencies": {
     "app-module-path": "^1.1.0",
+    "bluebird": "^3.4.3",
     "boom": "^4.0.0",
+    "config": "^1.21.0",
     "hapi": "^14.2.0",
     "hapi-routing": "^1.0.0",
     "uuid": "^2.0.2"
