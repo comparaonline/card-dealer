@@ -9,9 +9,10 @@ describe('Server Random errors', () => {
   let uri;
   beforeEach(() => server.start().then(assigned => { uri = assigned; }));
   afterEach(() => server.stop());
+  beforeEach(() => randomErrors.every(2));
+  afterEach(() => randomErrors.never());
 
   it('should return a new token when calling POST /deck', done => {
-    randomErrors.every(2);
     request.post(`${uri}/deck`, (error, response, body) => {
       expect(error).to.be.null;
       expect(response.statusCode).to.eq(200);
@@ -23,7 +24,6 @@ describe('Server Random errors', () => {
           expect(error3).to.be.null;
           expect(response3.statusCode).to.eq(200);
           expect(body3.length).to.eq(36);
-          randomErrors.never();
           done();
         });
       });

@@ -2,6 +2,7 @@
 
 const Boom = require('boom');
 const Controller = require('hapi-routing/controller');
+const Joi = require('joi');
 const DeckManager = require('lib/deck-manager');
 const mightFail = require('lib/random-errors').mightFail;
 
@@ -12,6 +13,15 @@ module.exports = class MainController extends Controller {
     mightFail();
     const token = manager.createDeck();
     this.reply(token);
+  }
+
+  static dealValidation() {
+    return {
+      params: {
+        id: Joi.string().length(36),
+        count: Joi.number().positive()
+      }
+    };
   }
 
   deal() {
