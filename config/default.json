@@ -1,0 +1,8 @@
+{
+  "hapi": {
+    "configuration": {},
+    "connection": {
+      "port": 8080
+    }
+  }
+}

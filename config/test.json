@@ -1,0 +1,8 @@
+{
+  "hapi": {
+    "configuration": {
+      "debug": false
+    },
+    "connection": {}
+  }
+}
