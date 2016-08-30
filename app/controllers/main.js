@@ -1,18 +1,17 @@
 'use strict';
 
 const Boom = require('boom');
-const Controller = require('hapi-routing/controller');
 const Joi = require('joi');
 const DeckManager = require('lib/deck-manager');
 const mightFail = require('lib/random-errors').mightFail;
 
 const manager = new DeckManager();
 
-module.exports = class MainController extends Controller {
-  start() {
+module.exports = class MainController {
+  start(request, reply) {
     mightFail();
     const token = manager.createDeck();
-    this.reply(token);
+    reply(token);
   }
 
   static dealValidation() {
@@ -24,13 +23,13 @@ module.exports = class MainController extends Controller {
     };
   }
 
-  deal() {
+  deal(request, reply) {
     mightFail();
-    const token = this.request.params.id;
-    const count = this.request.params.count || 1;
+    const token = request.params.id;
+    const count = request.params.count || 1;
     try {
       const deck = manager.getDeck(token);
-      this.reply(deck.deal(count));
+      reply(deck.deal(count));
     } catch (e) {
       throw Boom.wrap(e, 404);
     }
