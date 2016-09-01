@@ -5,7 +5,7 @@ const Deck = require('lib/deck');
 describe('Deck', () => {
   it('should be shoufled', () => {
     const deck = new Deck();
-    const comp = (a, b) => a.toString().localeCompare(b.toString());
+    const comp = (a, b) => a.localeCompare(b);
     const sort = (a, b) => comp(a.number, b.number) || comp(a.suit, b.suit);
     expect(deck.cards).to.not.deep.eq(Deck.cards);
     expect(deck.cards.sort(sort)).to.deep.eq(Deck.cards.sort(sort));
