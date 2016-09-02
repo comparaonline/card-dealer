@@ -63,6 +63,20 @@ describe('Dealer API', () => {
     });
   });
 
+  it('should throw 405 when it runs out of cards', done => {
+    const CARD_COUNT = 53;
+    request.post(`${uri}/deck`, (error, _, token) => {
+      expect(error).to.be.null;
+      request.get(`${uri}/deck/${token}/deal/${CARD_COUNT}`,
+        (error2, response, body) => {
+          expect(error2).to.be.null;
+          expect(response.statusCode).to.eq(405);
+          expect(body).to.match(/Out of cards/);
+          done();
+        });
+    });
+  });
+
   it('should throw 404 when accessing a non-existent deck', done => {
     const INVALID = '123456789012345678901234567890123456';
     request.get(`${uri}/deck/${INVALID}/deal`, (error, response, body) => {

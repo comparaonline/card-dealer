@@ -4,6 +4,8 @@ const Boom = require('boom');
 const Joi = require('joi');
 const DeckManager = require('lib/deck-manager');
 const mightFail = require('lib/random-errors').mightFail;
+const DeckOutOfCards = require('lib/errors/deck-out-of-cards');
+const DeckNotFound = require('lib/errors/deck-not-found');
 
 const manager = new DeckManager();
 
@@ -31,7 +33,12 @@ module.exports = class MainController {
       const deck = manager.getDeck(token);
       reply(deck.deal(count));
     } catch (e) {
-      throw Boom.wrap(e, 404);
+      if (e instanceof DeckOutOfCards) {
+        throw Boom.wrap(e, 405);
+      }
+      if (e instanceof DeckNotFound) {
+        throw Boom.wrap(e, 404);
+      }
     }
   }
 };
