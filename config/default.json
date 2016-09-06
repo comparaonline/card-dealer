@@ -4,5 +4,6 @@
     "connection": {
       "port": 8080
     }
-  }
+  },
+  "failEvery": 0
 }
