@@ -25,6 +25,10 @@ module.exports = class MainController {
     };
   }
 
+  healthcheck(request, reply) {
+    reply('ok!');
+  }
+
   deal(request, reply) {
     mightFail();
     const token = request.params.id;
