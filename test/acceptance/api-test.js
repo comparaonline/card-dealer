@@ -11,7 +11,7 @@ describe('Dealer API', () => {
   afterEach(() => server.stop());
 
   it('should return a new token when calling POST /deck', done => {
-    request.post(`${uri}/deck`, (error, response, body) => {
+    request.post(`${uri}/dealer/deck`, (error, response, body) => {
       expect(error).to.be.null;
       expect(response.statusCode).to.eq(200);
       expect(body.length).to.eq(36);
@@ -20,9 +20,9 @@ describe('Dealer API', () => {
   });
 
   it('should deal cards when using an existent deck', done => {
-    request.post(`${uri}/deck`, (error, _, token) => {
+    request.post(`${uri}/dealer/deck`, (error, _, token) => {
       expect(error).to.be.null;
-      request.get(`${uri}/deck/${token}/deal`, (error2, response, body) => {
+      request.get(`${uri}/dealer/deck/${token}/deal`, (error2, response, body) => {
         expect(error2).to.be.null;
         expect(response.statusCode).to.eq(200);
         const card = JSON.parse(body);
@@ -35,9 +35,9 @@ describe('Dealer API', () => {
 
   it('should allow specifying the amount of cards to deal', done => {
     const CARD_COUNT = 10;
-    request.post(`${uri}/deck`, (error, _, token) => {
+    request.post(`${uri}/dealer/deck`, (error, _, token) => {
       expect(error).to.be.null;
-      request.get(`${uri}/deck/${token}/deal/${CARD_COUNT}`,
+      request.get(`${uri}/dealer/deck/${token}/deal/${CARD_COUNT}`,
         (error2, response, body) => {
           expect(error2).to.be.null;
           expect(response.statusCode).to.eq(200);
@@ -51,9 +51,9 @@ describe('Dealer API', () => {
   });
   it('should fail on an invalid deal count', done => {
     const CARD_COUNT = -10;
-    request.post(`${uri}/deck`, (error, _, token) => {
+    request.post(`${uri}/dealer/deck`, (error, _, token) => {
       expect(error).to.be.null;
-      request.get(`${uri}/deck/${token}/deal/${CARD_COUNT}`,
+      request.get(`${uri}/dealer/deck/${token}/deal/${CARD_COUNT}`,
         (error2, response, body) => {
           expect(error2).to.be.null;
           expect(response.statusCode).to.eq(400);
@@ -65,9 +65,9 @@ describe('Dealer API', () => {
 
   it('should throw 405 when it runs out of cards', done => {
     const CARD_COUNT = 53;
-    request.post(`${uri}/deck`, (error, _, token) => {
+    request.post(`${uri}/dealer/deck`, (error, _, token) => {
       expect(error).to.be.null;
-      request.get(`${uri}/deck/${token}/deal/${CARD_COUNT}`,
+      request.get(`${uri}/dealer/deck/${token}/deal/${CARD_COUNT}`,
         (error2, response, body) => {
           expect(error2).to.be.null;
           expect(response.statusCode).to.eq(405);
@@ -79,7 +79,7 @@ describe('Dealer API', () => {
 
   it('should throw 404 when accessing a non-existent deck', done => {
     const INVALID = '123456789012345678901234567890123456';
-    request.get(`${uri}/deck/${INVALID}/deal`, (error, response, body) => {
+    request.get(`${uri}/dealer/deck/${INVALID}/deal`, (error, response, body) => {
       expect(error).to.be.null;
       expect(response.statusCode).to.eq(404);
       const result = JSON.parse(body);
