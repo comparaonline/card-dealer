@@ -5,27 +5,30 @@
   "main": "index.js",
   "scripts": {
     "start": "node .",
-    "test": "NODE_ENV=test mocha"
+    "test": "NODE_ENV=test mocha",
+    "pretest": "npm run eslint",
+    "eslint": "eslint '*/**/*.js'"
   },
+  "repository": "https://github.com/comparaonline/card-dealer",
   "author": "Ezequiel Rabinovich <erabinovich@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "co-test-helpers": "^1.1.2",
-    "eslint": "^3.3.1",
-    "eslint-config-airbnb-base": "^5.0.3",
-    "eslint-plugin-import": "^1.14.0",
-    "mocha": "^3.0.2",
+    "eslint": "^4.0.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.3.0",
+    "mocha": "^3.4.2",
     "request": "^2.74.0"
   },
   "dependencies": {
-    "app-module-path": "^1.1.0",
+    "app-module-path": "^2.2.0",
     "bluebird": "^3.4.3",
-    "boom": "^4.0.0",
+    "boom": "^5.1.0",
     "config": "^1.21.0",
-    "hapi": "^14.2.0",
+    "hapi": "^16.4.3",
     "hapi-cors": "^1.0.1",
     "hapi-routing": "^2.0.0",
-    "joi": "^9.0.4",
-    "uuid": "^2.0.2"
+    "joi": "^10.5.2",
+    "uuid": "^3.0.1"
   }
 }
