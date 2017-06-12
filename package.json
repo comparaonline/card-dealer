@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node .",
-    "test": "NODE_ENV=test mocha"
+    "test": "NODE_ENV=test mocha",
+    "pretest": "npm run eslint",
+    "eslint": "eslint '*/**/*.js'"
   },
   "repository": "https://github.com/comparaonline/card-dealer",
   "author": "Ezequiel Rabinovich <erabinovich@gmail.com>",

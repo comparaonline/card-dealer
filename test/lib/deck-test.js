@@ -14,7 +14,7 @@ describe('Deck', () => {
   it('should deal the whole deck, never repeating a card', () => {
     const dealt = [];
     const deck = new Deck();
-    for (let i = 0; i < 52; i++) {
+    for (let i = 0; i < 52; i += 1) {
       const id = c => `${c.number}${c.suit}`;
       const card = id(deck.deal());
       expect(card).to.not.be.oneOf(dealt);
@@ -35,7 +35,7 @@ describe('Deck', () => {
 
   it('should throw an exception when the deck is dealt completely', () => {
     const deck = new Deck();
-    for (let i = 0; i < 52; i++) { deck.deal(); }
+    for (let i = 0; i < 52; i += 1) { deck.deal(); }
     expect(() => deck.deal()).to.throw(/Out of cards/);
   });
 });
