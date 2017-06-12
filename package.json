@@ -19,7 +19,7 @@
     "request": "^2.74.0"
   },
   "dependencies": {
-    "app-module-path": "^1.1.0",
+    "app-module-path": "^2.2.0",
     "bluebird": "^3.4.3",
     "boom": "^4.0.0",
     "config": "^1.21.0",
