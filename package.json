@@ -21,9 +21,9 @@
   "dependencies": {
     "app-module-path": "^2.2.0",
     "bluebird": "^3.4.3",
-    "boom": "^4.0.0",
+    "boom": "^5.1.0",
     "config": "^1.21.0",
-    "hapi": "^14.2.0",
+    "hapi": "^16.4.3",
     "hapi-cors": "^1.0.1",
     "hapi-routing": "^2.0.0",
     "joi": "^9.0.4",

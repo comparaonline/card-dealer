@@ -38,10 +38,10 @@ module.exports = class MainController {
       reply(deck.deal(count));
     } catch (e) {
       if (e instanceof DeckOutOfCards) {
-        throw Boom.wrap(e, 405);
+        reply(Boom.methodNotAllowed(e.message));
       }
       if (e instanceof DeckNotFound) {
-        throw Boom.wrap(e, 404);
+        reply(Boom.notFound(e.message));
       }
     }
   }
